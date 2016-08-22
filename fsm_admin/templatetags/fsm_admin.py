@@ -47,7 +47,7 @@ def fsm_submit_row(context):
     original = context.get('original', None)
     model_name = ''
     if original is not None:
-        if original._deferred:
+        if getattr(original, '_deferred', None):
             model_name = type(original).__base__._meta.verbose_name
         else:
             model_name = original.__class__._meta.verbose_name
